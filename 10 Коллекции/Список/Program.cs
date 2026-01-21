@@ -10,7 +10,7 @@ namespace Список
             //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
             //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
             //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
-
+            Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
         }
 
 
@@ -92,6 +92,25 @@ namespace Список
                 Console.WriteLine(string.Join("\n", books[bookN..bookLast]));
             else
                 Console.WriteLine("Неверный ввод");
+        }
+
+        
+        static void Task_base_11_3_2() //11.3 Задачи легкого уровня.Книги о Гарри Поттере
+        {
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0; //количество книг на полке
+            List<string> books = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                books.Add(Console.ReadLine());
+            }
+            string new_book_name = Console.ReadLine();
+            int new_book_pos = Convert.ToInt32(Console.ReadLine()) - 1;
+            string gived_book_name = Console.ReadLine();
+            string desired_book_name = Console.ReadLine();
+            books.Insert(new_book_pos, new_book_name);
+            books.Remove(gived_book_name);
+            int desired_book_pos = books.IndexOf(desired_book_name)+1;
+            Console.WriteLine(desired_book_pos);
         }
     }
 }   
