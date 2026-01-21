@@ -8,9 +8,9 @@ namespace Список
         {
             //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
             //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
-            Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
-            //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
-            Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
+            //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
+            //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
+
         }
 
 
@@ -24,6 +24,7 @@ namespace Список
             }
             Console.WriteLine(string.Join(" ", strings));
         }
+
 
         static void Task_base_11_2_2() //11.2 Задачи базового уровня. Вывод чисел
         {
@@ -41,19 +42,18 @@ namespace Список
                     i--;
                 }
             }
-
             nums.Sort(); // сортируем по возрастанию
             foreach (int i in nums)
             { 
                 Console.WriteLine(i);
             }
-
             nums.Reverse(); // сортируем по убыванию
             foreach (int i in nums)
             {
                 Console.Write($"{i} ");
             }
         }
+        
         static void Task_base_11_3_1() //11.3 Задачи легкого уровня.Запросы лингвистов
         {
             string target = "abcdabcaaa";
@@ -61,6 +61,7 @@ namespace Список
             string result = string.Join(", ", IndexOfAll(target, symbol));
             Console.WriteLine(result);
         }
+
 
         static List<int> IndexOfAll(string target, char symbol) //11.3 Задачи легкого уровня.Запросы лингвистов
         {
@@ -94,3 +95,4 @@ namespace Список
         }
     }
 }   
+
