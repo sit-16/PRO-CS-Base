@@ -7,7 +7,8 @@ namespace Список
         static void Main(string[] args)
         {
             //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
-            Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
+            //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
+            Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
         }
 
 
@@ -51,5 +52,23 @@ namespace Список
                 Console.Write($"{i} ");
             }
         }
+
+
+        static void Task_base_11_2_3() //11.2 Задачи базового уровня. Не знаю что выбрать
+        {
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0; //количество элементов в списке
+            List<string> books = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                books.Add(Console.ReadLine());
+            }
+            int bookN = int.TryParse(Console.ReadLine(), out bookN) ? bookN : 0;
+            int bookCount = int.TryParse(Console.ReadLine(), out bookCount) ? bookCount : 0;
+            int bookLast = bookN + bookCount ;
+            if (bookLast <= books.Count)
+                Console.WriteLine(string.Join("\n", books[bookN..bookLast]));
+            else
+                Console.WriteLine("Неверный ввод");
+        }
     }
-}
+}   
