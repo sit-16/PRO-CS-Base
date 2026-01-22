@@ -129,10 +129,13 @@ namespace Список
             {
                 cource.Remove(Console.ReadLine());
             }
-            foreach (string s in cource)
-            {
-                Console.WriteLine(s);
-            }
+            if (cource.Count == 0)
+                Console.WriteLine("Начните новый курс Иосифа Дзеранова! И станьте еще на шаг ближе к профессии разработчик!");
+            else
+                foreach (string s in cource)
+                {
+                    Console.WriteLine(s);
+                }
         }
 
         static void Task_base_11_3_4() //11.3 Задачи легкого уровня.Парад и режисёр
