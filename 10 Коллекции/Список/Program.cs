@@ -13,7 +13,8 @@ namespace Список
             //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
             //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
             //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
-            Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
+            //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
+            Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
         }
 
 
@@ -151,6 +152,30 @@ namespace Список
             for (int i = 1; i <= n; i++)
                 if (n % i == 0) d.Add(i);
             return d;
+        }
+
+        static void Task_base_11_3_5() //11.3 Задачи легкого уровня.Кредитный скоринг
+        {
+            List<string> borrowers = new List<string> { "Иванов", "Васильев" };
+            List<int> rates = new List<int> { 25, 85 };
+
+            List<string> solventBorrowers = GetSolventBorrowers(borrowers, rates);
+
+            foreach (string borrower in solventBorrowers)
+            {
+                Console.WriteLine(borrower);
+            }
+        }
+
+        static List<string> GetSolventBorrowers(List<string> borrowers, List<int> rates) //11.3 Задачи легкого уровня.Кредитный скоринг
+        {
+            List <string> res = new List<string>();
+            for (int i = 0; i < rates.Count; i++)
+            {
+                if (rates[i] > 75)
+                    res.Add(borrowers[i]);
+            }
+            return res;
         }
     }
 }
