@@ -122,16 +122,18 @@ namespace Список
             {
                 cource.Add(Console.ReadLine());
             }
-            //Console.WriteLine(string.Join(" ", cource));
             n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
             for (int i = 0; i < n; i++)
             {
                 cource.Remove(Console.ReadLine());
             }
-            foreach (string s in cource)
-            {
-                Console.WriteLine(s);
-            }
+            if (cource.Count == 0)
+                Console.WriteLine("Начните новый курс Иосифа Дзеранова! И станьте еще на шаг ближе к профессии разработчик!");
+            else
+                foreach (string s in cource)
+                {
+                    Console.WriteLine(s);
+                }
         }
     }
 }
