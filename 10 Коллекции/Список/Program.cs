@@ -10,7 +10,8 @@ namespace Список
             //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
             //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
             //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
-            Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
+            //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
+            Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
         }
 
 
@@ -44,7 +45,7 @@ namespace Список
             }
             nums.Sort(); // сортируем по возрастанию
             foreach (int i in nums)
-            { 
+            {
                 Console.WriteLine(i);
             }
             nums.Reverse(); // сортируем по убыванию
@@ -53,7 +54,7 @@ namespace Список
                 Console.Write($"{i} ");
             }
         }
-        
+
         static void Task_base_11_3_1() //11.3 Задачи легкого уровня.Запросы лингвистов
         {
             string target = "abcdabcaaa";
@@ -66,7 +67,7 @@ namespace Список
         static List<int> IndexOfAll(string target, char symbol) //11.3 Задачи легкого уровня.Запросы лингвистов
         {
             List<int> count = new List<int>();
-            for (int i = 0; i< target.Length;i++) 
+            for (int i = 0; i < target.Length; i++)
             {
                 if (target[i] == symbol)
                 {
@@ -87,14 +88,14 @@ namespace Список
             }
             int bookN = int.TryParse(Console.ReadLine(), out bookN) ? bookN : 0;
             int bookCount = int.TryParse(Console.ReadLine(), out bookCount) ? bookCount : 0;
-            int bookLast = bookN + bookCount ;
+            int bookLast = bookN + bookCount;
             if (bookLast <= books.Count)
                 Console.WriteLine(string.Join("\n", books[bookN..bookLast]));
             else
                 Console.WriteLine("Неверный ввод");
         }
 
-        
+
         static void Task_base_11_3_2() //11.3 Задачи легкого уровня.Книги о Гарри Поттере
         {
             int n = int.TryParse(Console.ReadLine(), out n) ? n : 0; //количество книг на полке
@@ -109,9 +110,29 @@ namespace Список
             string desired_book_name = Console.ReadLine();
             books.Insert(new_book_pos, new_book_name);
             books.Remove(gived_book_name);
-            int desired_book_pos = books.IndexOf(desired_book_name)+1;
+            int desired_book_pos = books.IndexOf(desired_book_name) + 1;
             Console.WriteLine(desired_book_pos);
         }
+
+        static void Task_base_11_3_3() //11.3 Задачи легкого уровня.Список курсов
+        {
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0; //количество элементов в списке
+            List<string> cource = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                cource.Add(Console.ReadLine());
+            }
+            //Console.WriteLine(string.Join(" ", cource));
+            n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
+            for (int i = 0; i < n; i++)
+            {
+                cource.Remove(Console.ReadLine());
+            }
+            foreach (string s in cource)
+            {
+                Console.WriteLine(s);
+            }
+        }
     }
-}   
+}
 
