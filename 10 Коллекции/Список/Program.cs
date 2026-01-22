@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Список
 {
     internal class Program
@@ -14,7 +15,8 @@ namespace Список
             //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
             //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
             //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
-            Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
+            //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
+            Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
         }
 
 
@@ -143,7 +145,7 @@ namespace Список
         {
             int num = 6;
             List<int> divisors = GetDivisors(num);
-            Console.Write(String.Join(", ", divisors));
+            Console.Write(string.Join(", ", divisors));
         }
 
         static List<int> GetDivisors(int n)
@@ -169,11 +171,46 @@ namespace Список
 
         static List<string> GetSolventBorrowers(List<string> borrowers, List<int> rates) //11.3 Задачи легкого уровня.Кредитный скоринг
         {
-            List <string> res = new List<string>();
+            List<string> res = new List<string>();
             for (int i = 0; i < rates.Count; i++)
             {
                 if (rates[i] > 75)
                     res.Add(borrowers[i]);
+            }
+            return res;
+        }
+
+        static void Task_base_11_3_6() //11.3 Задачи легкого уровня.Криптография
+        {
+            int number = 120;
+            List<int> primeDivisors = GetPrimeDivisors(number);
+
+            Console.WriteLine(string.Join(" ", primeDivisors));
+        }
+
+
+        static List<int> GetPrimeDivisors(int n) //11.3 Задачи легкого уровня.Криптография
+        {
+            List<int> res = new List<int>();
+            int i = 1;
+            while (n > 1)
+            {
+                i++;
+                if (n % i == 0)
+                {                    
+                    bool simp = true;
+                    for (int j = 2; j < i; j++)
+                    {
+                        if (i % j == 0 && j != i)
+                            simp = false;
+                    }
+                    if (simp)
+                    {
+                        res.Add(i);
+                        n /= i;
+                        i = 1;
+                    }
+                }                
             }
             return res;
         }
