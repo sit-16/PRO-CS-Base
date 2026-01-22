@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 namespace Список
 {
@@ -11,7 +12,8 @@ namespace Список
             //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
             //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
             //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
-            Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
+            //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
+            Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
         }
 
 
@@ -122,7 +124,6 @@ namespace Список
             {
                 cource.Add(Console.ReadLine());
             }
-            //Console.WriteLine(string.Join(" ", cource));
             n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
             for (int i = 0; i < n; i++)
             {
@@ -132,6 +133,21 @@ namespace Список
             {
                 Console.WriteLine(s);
             }
+        }
+
+        static void Task_base_11_3_4() //11.3 Задачи легкого уровня.Парад и режисёр
+        {
+            int num = 6;
+            List<int> divisors = GetDivisors(num);
+            Console.Write(String.Join(", ", divisors));
+        }
+
+        static List<int> GetDivisors(int n)
+        {
+            List<int> d = new List<int>();
+            for (int i = 1; i <= n; i++)
+                if (n % i == 0) d.Add(i);
+            return d;
         }
     }
 }
