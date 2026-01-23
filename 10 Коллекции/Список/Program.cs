@@ -17,7 +17,8 @@ namespace Список
             //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
             //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
             //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
-            Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
+            //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
+            Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
         }
 
 
@@ -247,6 +248,32 @@ namespace Список
                 Console.WriteLine("Радостно!");
             }
         }
+
+        static List<int> GetNumbers(string s)
+        {           
+            List<int> Numbers = new List<int>();
+            string tempSt = "";
+            foreach (char c in s)
+            {
+                if (c >= '0' && c <= '9')
+                    tempSt += c;
+                else if (tempSt.Length > 0)
+                {
+                    Numbers.Add(int.Parse(tempSt));
+                    tempSt = "";
+                }
+            }
+            if (tempSt.Length > 0) Numbers.Add(int.Parse(tempSt));
+            return Numbers;
+        }
+        
+        static void Task_base_11_3_8() //11.3 Задачи легкого уровня.Плохая машинистка
+        {
+            string input = "77раз отмерь,1–отрежь11.3";
+            List<int> numbers = GetNumbers(input);
+            Console.WriteLine(string.Join(" ", numbers));
+        }
     }
+
 }
 
