@@ -16,7 +16,8 @@ namespace Список
             //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
             //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
             //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
-            Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
+            //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
+            Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
         }
 
 
@@ -197,7 +198,7 @@ namespace Список
             {
                 i++;
                 if (n % i == 0)
-                {                    
+                {
                     bool simp = true;
                     for (int j = 2; j < i; j++)
                     {
@@ -210,9 +211,41 @@ namespace Список
                         n /= i;
                         i = 1;
                     }
-                }                
+                }
             }
             return res;
+        }
+
+        static List<string> GetStringList(int n) //11.3 Задачи легкого уровня.Чашки
+        {
+            List<string> strings = new List<string>();
+            for (int i = 0; i < n; i++)
+            {
+                strings.Add(Console.ReadLine());
+            }
+            return strings;
+        }
+        static void Task_base_11_3_7() //11.3 Задачи легкого уровня.Чашки
+        {
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
+            List<string> oldBowls = GetStringList(n);
+            int b = int.TryParse(Console.ReadLine(), out b) ? b : 0;
+            int k = int.TryParse(Console.ReadLine(), out k) ? k : 0;
+            List<string> newBowls = GetStringList(k);
+            List<string> resBowls = oldBowls[0..^b];
+            resBowls.AddRange(newBowls);          
+            foreach (string bowl in resBowls)
+            {
+                Console.WriteLine(bowl);
+            }
+            if (resBowls.Count < oldBowls.Count)
+            {
+                Console.WriteLine("Грустно!");                
+            }
+            else 
+            {
+                Console.WriteLine("Радостно!");
+            }
         }
     }
 }
