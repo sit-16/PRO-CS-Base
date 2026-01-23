@@ -18,7 +18,8 @@ namespace Список
             //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
             //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
             //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
-            Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
+            //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
+            Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
         }
 
 
@@ -186,7 +187,6 @@ namespace Список
         {
             int number = 120;
             List<int> primeDivisors = GetPrimeDivisors(number);
-
             Console.WriteLine(string.Join(" ", primeDivisors));
         }
 
@@ -272,6 +272,26 @@ namespace Список
             string input = "77раз отмерь,1–отрежь11.3";
             List<int> numbers = GetNumbers(input);
             Console.WriteLine(string.Join(" ", numbers));
+        }
+
+       
+        static void Task_base_11_4_1() //11.4 Задачи легкого уровня.Плохая машинистка
+        {
+            int k = int.TryParse(Console.ReadLine(), out k) ? k : 0;
+            List<string> strings = new List<string>();
+            for (int i = 0; i < k; i++)
+            {
+                strings.Add(Console.ReadLine());
+            }
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
+            int j = 0;
+            k--;
+            while(j < n)
+            {
+                Console.WriteLine(strings[k-j*2]);
+                j++;
+            }
+
         }
     }
 
