@@ -21,7 +21,8 @@ namespace Список
             //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
             //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
             //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
-            Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
+            //Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
+            Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
         }
 
 
@@ -336,6 +337,51 @@ namespace Список
             List<int> merged = MergeLists(allLists);
 
             Console.WriteLine(string.Join(" ", merged));
+        }
+
+
+        static List<string> GetDaysStatistics(List<string> friendWeekdays) //11.4 Задачи среднего уровня. Хотим "посидеть"
+        {
+            string[] friendDays = new string[7];
+            int[] countByDay = new int[7];
+            List<string> weekDays = new List<string>()
+            {"понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье"};
+            foreach (string friend in friendWeekdays)
+            {
+                friendDays = friend.Split(' ');
+                foreach (string day in friendDays)
+                {
+                    int i = weekDays.IndexOf(day);
+                    if (i > -1) countByDay[i]++;
+                }
+            }
+
+            List<string> result = new List<string>();
+            for (int i = 0; i < weekDays.Count; i++)
+            {
+                if (countByDay[i]>0)
+                {
+                    result.Add($"{weekDays[i]} {countByDay[i]}");
+                }                
+            }
+            return result;
+        }
+
+
+        static void Task_base_11_4_4() //11.4 Задачи среднего уровня. Хотим "посидеть"
+        {
+            List<string> friendWeekdays = new List<string>
+            {
+                "понедельник среда",
+                "четверг пятница понедельник"
+            };
+
+            List<string> result = GetDaysStatistics(friendWeekdays);
+
+            foreach (var line in result)
+            {
+                Console.WriteLine(line);
+            }
         }
 
     }
