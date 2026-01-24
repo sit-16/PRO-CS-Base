@@ -22,7 +22,8 @@ namespace Список
             //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
             //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
             //Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
-            Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
+            //Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
+            Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
         }
 
 
@@ -359,10 +360,10 @@ namespace Список
             List<string> result = new List<string>();
             for (int i = 0; i < weekDays.Count; i++)
             {
-                if (countByDay[i]>0)
+                if (countByDay[i] > 0)
                 {
                     result.Add($"{weekDays[i]} {countByDay[i]}");
-                }                
+                }
             }
             return result;
         }
@@ -384,7 +385,27 @@ namespace Список
             }
         }
 
+
+        static void Task_base_11_4_5() //11.4 Задачи среднего уровня. Задача Иосифа Флавия
+        {
+            int n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
+            int k = int.TryParse(Console.ReadLine(), out k) ? k : 0;
+            List<int> people = new List<int>();
+            for (int i = 1; i <= n; i++)
+            {
+                people.Add(i);
+            }
+            int j = (k - 1) % people.Count;
+            while (people.Count > 1)
+            {
+                people.RemoveAt(j);
+                j--;
+                j += k;
+                int over = people.Count - j;
+                if (over <= 0) j = (over % people.Count) * -1;
+            }
+            Console.WriteLine(people[0]);
+        }
+
     }
-
 }
-
