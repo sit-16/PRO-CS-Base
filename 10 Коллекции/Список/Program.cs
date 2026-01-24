@@ -19,7 +19,8 @@ namespace Список
             //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
             //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
             //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
-            Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
+            //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
+            Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
         }
 
 
@@ -291,8 +292,27 @@ namespace Список
                 Console.WriteLine(strings[k-j*2]);
                 j++;
             }
-
         }
+
+        static List<int> Merge(List<int> list1, List<int> list2) //11.4 Задачи среднего уровня. Merge lists 1
+        {
+            List<int> listSumm = new List<int>();
+            listSumm.InsertRange(0, list1);
+            listSumm.InsertRange(list1.Count, list2);
+            listSumm.Sort();
+            return listSumm;
+        }
+
+        static void Task_base_11_4_2() //11.4 Задачи среднего уровня. Merge lists 1
+        {
+            List<int> list1 = new List<int>() {1, 7, 10, 16}; //{ 1, 2, 3 };
+            List<int> list2 = new List<int>() {5, 6, 13, 20 }; //{ 5, 6, 7, 8 };
+
+            List<int> list = Merge(list1, list2);
+            Console.WriteLine(string.Join(", ", list));
+        }
+
+
     }
 
 }
