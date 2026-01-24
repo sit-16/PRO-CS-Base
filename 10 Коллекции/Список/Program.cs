@@ -20,7 +20,8 @@ namespace Список
             //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
             //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
             //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
-            Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
+            //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
+            Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
         }
 
 
@@ -235,23 +236,23 @@ namespace Список
             int k = int.TryParse(Console.ReadLine(), out k) ? k : 0;
             List<string> newBowls = GetStringList(k);
             List<string> resBowls = oldBowls[0..^b];
-            resBowls.AddRange(newBowls);          
+            resBowls.AddRange(newBowls);
             foreach (string bowl in resBowls)
             {
                 Console.WriteLine(bowl);
             }
             if (resBowls.Count < oldBowls.Count)
             {
-                Console.WriteLine("Грустно!");                
+                Console.WriteLine("Грустно!");
             }
-            else 
+            else
             {
                 Console.WriteLine("Радостно!");
             }
         }
 
         static List<int> GetNumbers(string s)
-        {           
+        {
             List<int> Numbers = new List<int>();
             string tempSt = "";
             foreach (char c in s)
@@ -267,7 +268,7 @@ namespace Список
             if (tempSt.Length > 0) Numbers.Add(int.Parse(tempSt));
             return Numbers;
         }
-        
+
         static void Task_base_11_3_8() //11.3 Задачи легкого уровня.Плохая машинистка
         {
             string input = "77раз отмерь,1–отрежь11.3";
@@ -275,7 +276,7 @@ namespace Список
             Console.WriteLine(string.Join(" ", numbers));
         }
 
-       
+
         static void Task_base_11_4_1() //11.4 Задачи легкого уровня.Плохая машинистка
         {
             int k = int.TryParse(Console.ReadLine(), out k) ? k : 0;
@@ -287,9 +288,9 @@ namespace Список
             int n = int.TryParse(Console.ReadLine(), out n) ? n : 0;
             int j = 0;
             k--;
-            while(j < n)
+            while (j < n)
             {
-                Console.WriteLine(strings[k-j*2]);
+                Console.WriteLine(strings[k - j * 2]);
                 j++;
             }
         }
@@ -305,13 +306,37 @@ namespace Список
 
         static void Task_base_11_4_2() //11.4 Задачи среднего уровня. Merge lists 1
         {
-            List<int> list1 = new List<int>() {1, 7, 10, 16}; //{ 1, 2, 3 };
-            List<int> list2 = new List<int>() {5, 6, 13, 20 }; //{ 5, 6, 7, 8 };
+            List<int> list1 = new List<int>() { 1, 7, 10, 16 }; //{ 1, 2, 3 };
+            List<int> list2 = new List<int>() { 5, 6, 13, 20 }; //{ 5, 6, 7, 8 };
 
             List<int> list = Merge(list1, list2);
             Console.WriteLine(string.Join(", ", list));
         }
 
+
+        static List<int> MergeLists(List<List<int>> lists) //11.4 Задачи среднего уровня. Merge lists 2
+        {
+            List<int> merged = new List<int>();
+            foreach (List<int> lst in lists)
+            {
+                lst.Sort();
+                merged.InsertRange(merged.Count, lst);
+            }
+            return merged;
+        }
+
+        static void Task_base_11_4_3() //11.4 Задачи среднего уровня. Merge lists 2
+        {
+            List<int> list1 = new List<int> { 1, 2, 3, 4 };
+            List<int> list2 = new List<int> { 5, 6, 7 };
+            List<int> list3 = new List<int> { 10, 17, 11 };
+
+            List<List<int>> allLists = new List<List<int>> { list1, list2, list3 };
+
+            List<int> merged = MergeLists(allLists);
+
+            Console.WriteLine(string.Join(" ", merged));
+        }
 
     }
 
