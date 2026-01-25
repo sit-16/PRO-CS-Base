@@ -27,7 +27,8 @@ namespace Список
             //Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
             //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
             //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
-            Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
+            //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
+            Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
         }
 
 
@@ -491,10 +492,26 @@ namespace Список
         static void Task_base_12_2_1() //12.2 Задачи базового уровня. Строка
         {
             int n = Convert.ToInt32(Console.ReadLine());
-            Stack<string> stack= new Stack<string>();
+            Stack<string> stack = new Stack<string>();
             for (int i = 0; i < n; i++)
                 stack.Push(Console.ReadLine());
             Console.WriteLine(string.Join(' ', stack));
+        }
+
+
+        static void Task_base_12_2_2() //12.2 Задачи базового уровня. Выбор растений
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Stack<string> allPlants = new Stack<string>();
+            List<string> unwantedPlants = new List<string> { "Алоэ", "Бегония", "Каланхоэ" };
+            for (int i = 0; i < n; i++)
+                allPlants.Push(Console.ReadLine());
+            while (allPlants.Count > 0)
+            {
+                string plant = allPlants.Pop();
+                if (!unwantedPlants.Contains(plant))
+                    Console.WriteLine(plant);
+            }
         }
     }
 }
