@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Список
 {
@@ -29,7 +30,8 @@ namespace Список
             //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
             //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
             //Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
-            Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
+            //Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
+            Task_base_12_2_4(); //12.3 Задачи легкого уровня.Разворот массива
         }
 
 
@@ -526,6 +528,20 @@ namespace Список
                 stack.Push(v);
             }
             Console.WriteLine(stack.Contains(toFind));
+        }
+
+        static void Task_base_12_2_4() //12.3 Задачи легкого уровня.Разворот массива
+        {
+            string[] source = Console.ReadLine().Split(' ');
+            Stack<string> stack = new Stack<string>();
+            foreach (string v in source)
+            {
+                if (stack.Count == 0)
+                    stack.Push(v);
+                else if (v != stack.Peek())
+                    stack.Push(v);
+            }
+            Console.WriteLine(string.Join(' ', stack));
         }
     }
 }
