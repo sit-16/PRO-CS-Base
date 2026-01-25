@@ -26,7 +26,8 @@ namespace Список
             //Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
             //Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
             //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
-            Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
+            //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
+            Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
         }
 
 
@@ -425,7 +426,7 @@ namespace Список
 
         static void Task_base_11_5_1() //11.5 Задачи повышенного уровня. Разбиение на чанки
         {
-            List<string> input = new List<string> { "a", "b", "c", "d", "e", "f","j" };
+            List<string> input = new List<string> { "a", "b", "c", "d", "e", "f", "j" };
             int chunkSize = 2;
 
             List<List<string>> chunks = Chunked(input, chunkSize);
@@ -466,7 +467,7 @@ namespace Список
                 for (int j = 0; j < list.Count; j++)
                 {
                     if (j + i > list.Count) continue;
-                    List<string> temp = list[j..(j+i)];
+                    List<string> temp = list[j..(j + i)];
                     chunks.Add(temp);
                 }
             }
@@ -484,6 +485,16 @@ namespace Список
                 }
             }
             Console.WriteLine("]");
+        }
+
+
+        static void Task_base_12_2_1() //12.2 Задачи базового уровня. Строка
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Stack<string> stack= new Stack<string>();
+            for (int i = 0; i < n; i++)
+                stack.Push(Console.ReadLine());
+            Console.WriteLine(string.Join(' ', stack));
         }
     }
 }
