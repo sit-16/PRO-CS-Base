@@ -28,7 +28,8 @@ namespace Список
             //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
             //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
             //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
-            Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
+            //Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
+            Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
         }
 
 
@@ -512,6 +513,19 @@ namespace Список
                 if (!unwantedPlants.Contains(plant))
                     Console.WriteLine(plant);
             }
+        }
+
+
+        static void Task_base_12_2_3() //12.2 Задачи базового уровня. Нахождение элемента
+        {
+            string[] source = Console.ReadLine().Split(' ');
+            string toFind = Console.ReadLine();
+            Stack<string> stack = new Stack<string>();
+            foreach (string v in source)
+            {
+                stack.Push(v);
+            }
+            Console.WriteLine(stack.Contains(toFind));
         }
     }
 }
