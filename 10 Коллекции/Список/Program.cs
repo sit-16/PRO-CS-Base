@@ -31,7 +31,8 @@ namespace Список
             //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
             //Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
             //Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
-            Task_base_12_2_4(); //12.3 Задачи легкого уровня.Разворот массива
+            //Task_base_12_2_4(); //12.3 Задачи легкого уровня.Разворот массива
+            Task_base_12_2_5(); //12.3 Задачи легкого уровня. Список покупок
         }
 
 
@@ -542,6 +543,28 @@ namespace Список
                     stack.Push(v);
             }
             Console.WriteLine(string.Join(' ', stack));
+        }
+
+
+        static void Task_base_12_2_5() //12.3 Задачи легкого уровня. Список покупок
+        {
+            Stack<string> stack = new Stack<string>();
+            string input = Console.ReadLine();
+            while (input != "Конец списка")
+            {
+                stack.Push(input);
+                input = Console.ReadLine();
+            }
+            while (stack.Count > 0)
+            {
+                string purchase = stack.Pop();
+                if (purchase == "+")
+                {
+                    if (stack.Count > 0) stack.Pop();
+                    continue;
+                }
+                Console.WriteLine(purchase);
+            }
         }
     }
 }
