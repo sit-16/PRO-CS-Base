@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Список
@@ -23,7 +24,9 @@ namespace Список
             //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
             //Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
             //Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
-            Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
+            //Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
+            //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
+            Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
         }
 
 
@@ -407,5 +410,80 @@ namespace Список
             Console.WriteLine(people[0]);
         }
 
+        static List<List<string>> Chunked(List<string> list, int n) //11.5 Задачи повышенного уровня. Разбиение на чанки
+        {
+            List<List<string>> chunks = new List<List<string>>();
+            for (int i = 0; i < list.Count; i += n)
+            {
+                int end = i + n;
+                end = end > list.Count ? list.Count : end;
+                List<string> temp = list[i..end];
+                chunks.Add(temp);
+            }
+            return chunks;
+        }
+
+        static void Task_base_11_5_1() //11.5 Задачи повышенного уровня. Разбиение на чанки
+        {
+            List<string> input = new List<string> { "a", "b", "c", "d", "e", "f","j" };
+            int chunkSize = 2;
+
+            List<List<string>> chunks = Chunked(input, chunkSize);
+
+            Console.Write("[");
+            for (int i = 0; i < chunks.Count; i++)
+            {
+                Console.Write("[");
+                Console.Write("'" + string.Join("', '", chunks[i]) + "'");
+                Console.Write("]");
+                if (i != chunks.Count - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+            Console.WriteLine("]");
+        }
+
+        static List<List<string>> subLists(List<string> list) //11.5 Задачи повышенного уровня. Подсписки списка
+        {
+            List<List<string>> chunks = new List<List<string>>();
+            for (int i = 0; i <= list.Count; i++)
+            {
+                List<string> temp = list[0..i];
+                chunks.Add(temp);
+            }
+            return chunks;
+        }
+
+        static void Task_base_11_5_2() //11.5 Задачи повышенного уровня. Подсписки списка
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            List<string> list = new List<string>();
+            list.InsertRange(0, input);
+            List<List<string>> chunks = new List<List<string>>();
+            for (int i = 1; i <= list.Count; i++)
+            {
+                for (int j = 0; j < list.Count; j++)
+                {
+                    if (j + i > list.Count) continue;
+                    List<string> temp = list[j..(j+i)];
+                    chunks.Add(temp);
+                }
+            }
+
+            Console.Write("[");
+            Console.Write("[], ");
+            for (int i = 0; i < chunks.Count; i++)
+            {
+                Console.Write("[");
+                Console.Write("'" + string.Join("', '", chunks[i]) + "'");
+                Console.Write("]");
+                if (i != chunks.Count - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+            Console.WriteLine("]");
+        }
     }
 }
