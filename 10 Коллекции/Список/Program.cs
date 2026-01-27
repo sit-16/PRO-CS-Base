@@ -10,30 +10,36 @@ namespace Список
     {
         static void Main(string[] args)
         {
-            //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
-            //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
-            //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
-            //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
-            //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
-            //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
-            //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
-            //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
-            //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
-            //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
-            //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
-            //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
-            //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
-            //Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
-            //Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
-            //Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
-            //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
-            //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
-            //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
-            //Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
-            //Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
-            //Task_base_12_2_4(); //12.3 Задачи легкого уровня.Разворот массива
-            //Task_base_12_2_5(); //12.3 Задачи легкого уровня. Список покупок
-            Task_base_12_4_1(); //12.4 Задачи среднего уровня. Опечатки при вводе
+            for (int i = 0; i < 5; i++)
+            {
+                //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
+                //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
+                //Task_base_11_2_3(); //11.2 Задачи базового уровня. Не знаю что выбрать
+                //Task_base_11_3_1(); //11.3 Задачи легкого уровня.Запросы лингвистов
+                //Task_base_11_3_2(); //11.3 Задачи легкого уровня.Книги о Гарри Поттере
+                //Task_base_11_3_3(); //11.3 Задачи легкого уровня.Список курсов
+                //Task_base_11_3_4(); //11.3 Задачи легкого уровня.Парад и режисёр
+                //Task_base_11_3_5(); //11.3 Задачи легкого уровня.Кредитный скоринг
+                //Task_base_11_3_6(); //11.3 Задачи легкого уровня.Криптография
+                //Task_base_11_3_7(); //11.3 Задачи легкого уровня.Чашки
+                //Task_base_11_3_8(); //11.3 Задачи легкого уровня.Плохая машинистка
+                //Task_base_11_4_1(); //11.4 Задачи среднего уровня. К доске
+                //Task_base_11_4_2(); //11.4 Задачи среднего уровня. Merge lists 1
+                //Task_base_11_4_3(); //11.4 Задачи среднего уровня. Merge lists 2
+                //Task_base_11_4_4(); //11.4 Задачи среднего уровня. Хотим "посидеть"
+                //Task_base_11_4_5(); //11.4 Задачи среднего уровня. Задача Иосифа Флавия
+                //Task_base_11_5_1(); //11.5 Задачи повышенного уровня. Разбиение на чанки
+                //Task_base_11_5_2(); //11.5 Задачи повышенного уровня. Подсписки списка
+                //Task_base_12_2_1(); //12.2 Задачи базового уровня. Строка
+                //Task_base_12_2_2(); //12.2 Задачи базового уровня. Выбор растений
+                //Task_base_12_2_3(); //12.2 Задачи базового уровня. Нахождение элемента
+                //Task_base_12_2_4(); //12.3 Задачи легкого уровня.Разворот массива
+                //Task_base_12_2_5(); //12.3 Задачи легкого уровня. Список покупок
+                //Task_base_12_4_1(); //12.4 Задачи среднего уровня. Опечатки при вводе
+                //Task_base_12_4_2(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность
+                //Task_base_12_4_3(); //12.4 Задачи среднего уровня. Юный помощник
+                Task_base_12_4_3_right(); //12.4 Задачи среднего уровня. Юный помощник
+            }
         }
 
 
@@ -580,5 +586,111 @@ namespace Список
             }
             Console.WriteLine(string.Join("", stack));
         }
+
+
+        public static void Task_base_12_4_2() //12.4 Задачи среднего уровня. Правильная скобочная последовательность
+        {
+            string input = Console.ReadLine();
+            Stack<char> brackets = new Stack<char>();
+            bool closed = true;
+            bool empty = string.IsNullOrEmpty(input);
+            if (!empty)
+            {
+                empty = false;
+                foreach (char c in input)
+                {
+                    if (c == '(') brackets.Push(c);                        
+                    if (c == ')')
+                    {
+                        if (brackets.Count == 0)
+                        {
+                            closed = false;
+                            break;
+                        }
+                        else brackets.Pop();
+                    }
+                }
+                if (brackets.Count != 0) closed = false;
+            }
+            Console.WriteLine(closed || empty ? "YES" : "NO");
+        }
+
+        static void Task_base_12_4_3() //12.4 Задачи среднего уровня. Юный помощник
+        {
+            int n = Convert.ToInt32(Console.ReadLine()); // Общее количество тарелок
+            Stack<string> plates = new Stack<string>();
+            for (int i = 0; i < n; i++) plates.Push(Console.ReadLine());
+            
+            int k = Convert.ToInt32(Console.ReadLine()); // Количество тарелок в стопке
+
+            Console.WriteLine("Все тарелки в одной стопке:");
+            foreach (var v in plates) Console.WriteLine(v); // Вывод введёных тарелок
+            Stack<string> rPlates = new Stack<string>(plates);
+
+            Console.WriteLine("Оставшиеся тарелки в первоначальной стопке:");
+            Stack<string> stopka = new Stack<string>();
+            for (int i = 0; i < k; i++)
+            {
+                if (rPlates.Count>0) stopka.Push(rPlates.Pop());
+            }
+            foreach (string plate in stopka) Console.WriteLine(plate);
+            
+            int counter = 0; // Дополнительные стопки
+            stopka.Clear();             
+            while (plates.Count > k)
+            {
+                counter++;
+                stopka.Push(plates.Pop());                                
+                if (counter == k || plates.Count == k)
+                {
+                    Console.WriteLine("Новая стопка:");
+                    foreach (string plate in stopka) Console.WriteLine(plate);
+                    stopka.Clear();
+                    counter = 0;
+                }
+            }
+        }
+
+        static void Task_base_12_4_3_right() //12.4 Задачи среднего уровня. Юный помощник
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            var allPlates = new Stack<string>();
+            for (int i = 0; i < n; i++)
+            {
+                allPlates.Push(Console.ReadLine());
+            }
+            int count = Convert.ToInt32(Console.ReadLine()); // Высота стопки
+            Console.WriteLine("Все тарелки в одной стопке:");
+            foreach (var plate in allPlates)
+            {
+                Console.WriteLine(plate);
+            }
+
+            var listStacks = new List<Stack<string>>();
+            while (allPlates.Count > count)
+            {
+                var stack = new Stack<string>();
+                while (stack.Count != count && allPlates.Count != count)
+                {
+                    stack.Push(allPlates.Pop());
+                }
+                listStacks.Add(stack);
+            }
+            Console.WriteLine("Оставшиеся тарелки в первоначальной стопке:");
+            foreach (var plate in allPlates)
+            {
+                Console.WriteLine(plate);
+            }
+
+            foreach (var stack in listStacks)
+            {
+                Console.WriteLine("Новая стопка:");
+                foreach (var plate in stack)
+                {
+                    Console.WriteLine(plate);
+                }
+            }
+        }
+
     }
 }
