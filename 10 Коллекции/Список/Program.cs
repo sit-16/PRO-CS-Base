@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Список
 {
@@ -38,7 +39,9 @@ namespace Список
                 //Task_base_12_4_1(); //12.4 Задачи среднего уровня. Опечатки при вводе
                 //Task_base_12_4_2(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность
                 //Task_base_12_4_3(); //12.4 Задачи среднего уровня. Юный помощник
-                Task_base_12_4_3_right(); //12.4 Задачи среднего уровня. Юный помощник
+                //Task_base_12_4_3_right(); //12.4 Задачи среднего уровня. Юный помощник
+                //Task_base_12_4_4(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
+                Task_base_12_4_4_right(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
             }
         }
 
@@ -599,7 +602,7 @@ namespace Список
                 empty = false;
                 foreach (char c in input)
                 {
-                    if (c == '(') brackets.Push(c);                        
+                    if (c == '(') brackets.Push(c);
                     if (c == ')')
                     {
                         if (brackets.Count == 0)
@@ -620,7 +623,7 @@ namespace Список
             int n = Convert.ToInt32(Console.ReadLine()); // Общее количество тарелок
             Stack<string> plates = new Stack<string>();
             for (int i = 0; i < n; i++) plates.Push(Console.ReadLine());
-            
+
             int k = Convert.ToInt32(Console.ReadLine()); // Количество тарелок в стопке
 
             Console.WriteLine("Все тарелки в одной стопке:");
@@ -631,16 +634,16 @@ namespace Список
             Stack<string> stopka = new Stack<string>();
             for (int i = 0; i < k; i++)
             {
-                if (rPlates.Count>0) stopka.Push(rPlates.Pop());
+                if (rPlates.Count > 0) stopka.Push(rPlates.Pop());
             }
             foreach (string plate in stopka) Console.WriteLine(plate);
-            
+
             int counter = 0; // Дополнительные стопки
-            stopka.Clear();             
+            stopka.Clear();
             while (plates.Count > k)
             {
                 counter++;
-                stopka.Push(plates.Pop());                                
+                stopka.Push(plates.Pop());
                 if (counter == k || plates.Count == k)
                 {
                     Console.WriteLine("Новая стопка:");
@@ -690,6 +693,98 @@ namespace Список
                     Console.WriteLine(plate);
                 }
             }
+        }
+
+
+        static void Task_base_12_4_4() //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
+        {
+            string input = Console.ReadLine();
+
+            int brCount = 4;
+            char[,] brTypes = new char[,]
+            {
+                {'(',')'},
+                {'[',']'},
+                {'{','}'},
+                {'<','>'},
+            };
+            List<Stack<int>> brackets = new List<Stack<int>>()
+            {
+                new Stack<int>(),
+                new Stack<int>(),
+                new Stack<int>(),
+                new Stack<int>(),
+            };
+
+            bool test = input != null;
+
+            for (int k = 0; k < input.Length; k++)
+            {
+                for (int i = 0; i < brCount; i++)
+                {
+                    if (input[k] == brTypes[i, 0])
+                    {
+                        brackets[i].Push(k);
+                        break;
+                    }
+                    else if (input[k] == brTypes[i, 1])
+                    {
+                        bool opened = brackets[i].Count > 0;
+                        bool goodPos = true;
+                        if (opened)
+                        {
+                            int pos = brackets[i].Pop();
+                            for (int j = 0; j < brCount; j++)
+                            {
+                                if (i != j)
+                                {
+                                    if (brackets[j].Count > 0)
+                                        goodPos &= pos > brackets[j].Peek();
+                                }
+                            }
+                        }
+                        test = goodPos && opened;
+                        break;
+                    }
+                }
+                if (!test) break;
+            }
+            int notClosed = 0;
+            foreach (Stack<int> stack in brackets)
+            {
+                notClosed += stack.Count;
+            }
+            Console.WriteLine(test && notClosed == 0);
+        }
+
+
+        static void Task_base_12_4_4_right() //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
+        {
+            int brCount = 4;
+            char[,] brTypes = new char[,]
+            {
+            {'(',')'},
+            {'[',']'},
+            {'{','}'},
+            {'<','>'}
+            };
+            string input = Console.ReadLine();
+            Stack<char> stack = new Stack<char>();
+            foreach (char ch in input)
+            {
+                bool done = false;
+                for (int i = 0; i < brCount; i++)
+                    if (ch == brTypes[i, 0]) { done = true; stack.Push(ch); break; }
+                if (!done)
+                    for (int j = 0; j < brCount; j++)
+                        if (ch == brTypes[j, 1])
+                        {
+                            if (stack.Count == 0) { stack.Push('!'); break; }
+                            if (stack.Peek() == brTypes[j, 0]) { done = true; stack.Pop(); break; }
+                        }
+                if (!done) break;
+            }
+            Console.WriteLine(stack.Count == 0);
         }
 
     }
