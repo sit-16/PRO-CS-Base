@@ -11,7 +11,7 @@ namespace Список
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 1; i++)
             {
                 //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
                 //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
@@ -41,7 +41,11 @@ namespace Список
                 //Task_base_12_4_3(); //12.4 Задачи среднего уровня. Юный помощник
                 //Task_base_12_4_3_right(); //12.4 Задачи среднего уровня. Юный помощник
                 //Task_base_12_4_4(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
-                Task_base_12_4_4_right(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
+                //Task_base_12_4_4_right(); //12.4 Задачи среднего уровня. Правильная скобочная последовательность-2
+                //Task_base_13_2_4(); //13.2 Задачи базового уровня. Заполни очередь
+                //Task_base_13_2_5(); //13.2 Задачи базового уровня. Эстафета
+                //Task_base_13_2_6(); //13.2 Задачи базового уровня. STOP
+                Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
             }
         }
 
@@ -787,5 +791,64 @@ namespace Список
             Console.WriteLine(stack.Count == 0);
         }
 
+
+        static void Task_base_13_2_4() //13.2 Задачи базового уровня. Заполни очередь
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Queue<string> que = new Queue<string>();
+            for (int i = 0; i < n; i++)
+            {
+                que.Enqueue(Console.ReadLine());
+            }
+            Console.WriteLine(string.Join(' ', que));
+        }
+
+
+        static void Task_base_13_2_5() //13.2 Задачи базового уровня. Эстафета
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Queue<string> teem1 = new Queue<string>();
+            for (int i = 0; i < n; i++)
+            {
+                teem1.Enqueue(Console.ReadLine());
+            }
+            n = Convert.ToInt32(Console.ReadLine());
+            Queue<string> teem2 = new Queue<string>();
+            for (int i = 0; i < n; i++)
+            {
+                teem2.Enqueue(Console.ReadLine());
+            }
+            Console.WriteLine($"Всего {teem1.Count + teem2.Count} участников соревнования.");
+            Console.WriteLine($"Открывающий первой команды {teem1.Peek()}, открывающий второй команды {teem2.Peek()}.");
+        }
+
+
+        static void Task_base_13_2_6() //13.2 Задачи базового уровня. STOP
+        {
+            Queue<string> que = new Queue<string>();
+            string input = Console.ReadLine();            
+            while (input != "stop") 
+            {
+                que.Enqueue(input);
+                input = Console.ReadLine();
+            }
+            Console.WriteLine(que.Count());
+            Console.WriteLine(string.Join(' ', que));
+        }
+
+        static void Task_base_13_2_7() //13.2 Задачи базового уровня. Чет нечет
+        {            
+            string[] input = Console.ReadLine().Split(' ');
+            Queue<int> odd = new Queue<int>();
+            Queue<int> even = new Queue<int>();
+            foreach (string st in input)
+            {
+                int n = Convert.ToInt32(st);
+                if (n%2 == 0) odd.Enqueue(n);
+                else even.Enqueue(n);
+            }
+            foreach (int num in odd) Console.WriteLine(num);
+            foreach (int num in even) Console.WriteLine(num);
+        }
     }
 }
