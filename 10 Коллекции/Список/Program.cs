@@ -46,7 +46,8 @@ namespace Список
                 //Task_base_13_2_5(); //13.2 Задачи базового уровня. Эстафета
                 //Task_base_13_2_6(); //13.2 Задачи базового уровня. STOP
                 //Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
-                Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
+                //Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
+                Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
             }
         }
 
@@ -827,8 +828,8 @@ namespace Список
         static void Task_base_13_2_6() //13.2 Задачи базового уровня. STOP
         {
             Queue<string> que = new Queue<string>();
-            string input = Console.ReadLine();            
-            while (input != "stop") 
+            string input = Console.ReadLine();
+            while (input != "stop")
             {
                 que.Enqueue(input);
                 input = Console.ReadLine();
@@ -838,14 +839,14 @@ namespace Список
         }
 
         static void Task_base_13_2_7() //13.2 Задачи базового уровня. Чет нечет
-        {            
+        {
             string[] input = Console.ReadLine().Split(' ');
             Queue<int> odd = new Queue<int>();
             Queue<int> even = new Queue<int>();
             foreach (string st in input)
             {
                 int n = Convert.ToInt32(st);
-                if (n%2 == 0) odd.Enqueue(n);
+                if (n % 2 == 0) odd.Enqueue(n);
                 else even.Enqueue(n);
             }
             foreach (int num in odd) Console.WriteLine(num);
@@ -854,12 +855,12 @@ namespace Список
 
 
         static void Task_base_13_3_1() //13.3 Задачи легкого уровня. Игра в пьяницу
-        {            
+        {
             string[] input = Console.ReadLine().Split(' ');
             Queue<int> koloda = new Queue<int>();
-            
-            foreach (string st in input) koloda.Enqueue(Convert.ToInt32(st));            
-            
+
+            foreach (string st in input) koloda.Enqueue(Convert.ToInt32(st));
+
             Queue<int> player1 = new Queue<int>();
             Queue<int> player2 = new Queue<int>();
             //Раздача карт
@@ -900,5 +901,42 @@ namespace Список
             }
             Console.WriteLine(player1.Count == 0 ? "Игрок2" : "Игрок1");
         }
+
+        static void Task_base_13_3_2() //13.3 Задачи легкого уровня. Очередь в поликлинике
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Queue<string> patient = new Queue<string>();
+            // Пациенты получают талончики
+            for (int i = 0; i < n; i++)
+            {
+                patient.Enqueue(Console.ReadLine());
+            }
+            int m = Convert.ToInt32(Console.ReadLine());
+            Queue<string> window = new Queue<string>();
+            // Окошки получают пациентов
+            for (int j = 0; j < m; j++)
+            {
+                string pt = patient.Count > 0 ? patient.Dequeue() : "";
+                window.Enqueue(pt);
+            }
+            //Вывод окошек
+            int win = 1;
+            foreach (string pt in window)
+            {
+                
+                if (pt == "")
+                    Console.WriteLine($"Окно {win} свободно");
+                else
+                    Console.WriteLine($"Клиент {pt} --> Окно {win}");
+                win++;
+            }
+            //Вывод пациентов
+            foreach (string pt in patient)
+            {
+                Console.WriteLine($"Клиент {pt} остается ждать");
+            }
+
+        }
+
     }
 }
