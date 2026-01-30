@@ -45,7 +45,8 @@ namespace Список
                 //Task_base_13_2_4(); //13.2 Задачи базового уровня. Заполни очередь
                 //Task_base_13_2_5(); //13.2 Задачи базового уровня. Эстафета
                 //Task_base_13_2_6(); //13.2 Задачи базового уровня. STOP
-                Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
+                //Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
+                Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
             }
         }
 
@@ -849,6 +850,55 @@ namespace Список
             }
             foreach (int num in odd) Console.WriteLine(num);
             foreach (int num in even) Console.WriteLine(num);
+        }
+
+
+        static void Task_base_13_3_1() //13.3 Задачи легкого уровня. Игра в пьяницу
+        {            
+            string[] input = Console.ReadLine().Split(' ');
+            Queue<int> koloda = new Queue<int>();
+            
+            foreach (string st in input) koloda.Enqueue(Convert.ToInt32(st));            
+            
+            Queue<int> player1 = new Queue<int>();
+            Queue<int> player2 = new Queue<int>();
+            //Раздача карт
+            bool turnP1 = true;
+            while (koloda.Count > 0)
+            {
+                if (turnP1) player1.Enqueue(koloda.Dequeue());
+                else player2.Enqueue(koloda.Dequeue());
+                turnP1 = !turnP1;
+            }
+            //Игра
+            while (player1.Count > 0 && player2.Count > 0)
+            {
+                int card1 = player1.Dequeue();
+                int card2 = player2.Dequeue();
+                Console.WriteLine($"Игрок1 {card1} Игрок2 {card2}");
+
+                if (card1 == 0 && card2 == 9)
+                {
+                    player1.Enqueue(card1);
+                    player1.Enqueue(card2);
+                }
+                else if (card2 == 0 && card1 == 9)
+                {
+                    player2.Enqueue(card2);
+                    player2.Enqueue(card1);
+                }
+                else if (card1 > card2)
+                {
+                    player1.Enqueue(card1);
+                    player1.Enqueue(card2);
+                }
+                else
+                {
+                    player2.Enqueue(card2);
+                    player2.Enqueue(card1);
+                }
+            }
+            Console.WriteLine(player1.Count == 0 ? "Игрок2" : "Игрок1");
         }
     }
 }
