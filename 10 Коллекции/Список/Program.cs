@@ -51,7 +51,8 @@ namespace Список
                 //Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
                 //Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
                 //Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
-                Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
+                //Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
+                Task_base_14_2_7();//14.2 Задачи базового уровня. Элементы
             }
         }
 
@@ -1017,6 +1018,14 @@ namespace Список
                 }
             }
             Console.WriteLine(kids.Count);
+        }
+
+        static void Task_base_14_2_7() //14.2 Задачи базового уровня. Элементы
+        {
+            HashSet<string> hst = new HashSet<string>();
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++) hst.Add(Console.ReadLine());
+            Console.WriteLine(string.Join("***", hst));
         }
 
     }
