@@ -47,7 +47,8 @@ namespace Список
                 //Task_base_13_2_6(); //13.2 Задачи базового уровня. STOP
                 //Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
                 //Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
-                Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
+                //Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
+                Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
             }
         }
 
@@ -923,7 +924,7 @@ namespace Список
             int win = 1;
             foreach (string pt in window)
             {
-                
+
                 if (pt == "")
                     Console.WriteLine($"Окно {win} свободно");
                 else
@@ -936,6 +937,56 @@ namespace Список
                 Console.WriteLine($"Клиент {pt} остается ждать");
             }
 
+        }
+
+
+        static void Task_base_13_4_1() //13.4 Задачи среднего уровня. Коммутатор
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            Queue<string> in_packs = new Queue<string>();
+            for (int i = 0; i < n; i++) in_packs.Enqueue(Console.ReadLine());
+
+            int m = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < m; i++) in_packs.Enqueue(Console.ReadLine());
+
+            int t = Convert.ToInt32(Console.ReadLine());
+            List<Queue<string>> Commutator = new List<Queue<string>>()
+            {
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> (),
+                new Queue<string> ()
+            };
+
+            foreach (string pack in in_packs)
+            {
+                string mark = pack.Split(' ')[^1];
+                switch (mark)
+                {
+                    case "VL8":
+                        Commutator[0].Enqueue(pack);
+                        break;
+                    case "VL10":
+                        Commutator[1].Enqueue(pack);
+                        Commutator[2].Enqueue(pack);
+                        Commutator[3].Enqueue(pack);
+                        break;
+                    case "VL12":
+                        Commutator[4].Enqueue(pack);
+                        Commutator[5].Enqueue(pack);
+                        break;
+                    default:
+                        Commutator[6].Enqueue(pack);
+                        Commutator[7].Enqueue(pack);
+                        break;
+                }
+            }
+            Console.WriteLine($"На порт {t} прилетело {Commutator[t].Count} пакетов:");
+            foreach (string pack in Commutator[t]) Console.WriteLine(pack);
         }
 
     }
