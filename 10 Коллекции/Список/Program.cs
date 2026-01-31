@@ -2,6 +2,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -48,7 +50,8 @@ namespace Список
                 //Task_base_13_2_7(); //13.2 Задачи базового уровня. Чет нечет
                 //Task_base_13_3_1(); //13.3 Задачи легкого уровня. Игра в пьяницу
                 //Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
-                Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
+                //Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
+                Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
             }
         }
 
@@ -989,5 +992,33 @@ namespace Список
             foreach (string pack in Commutator[t]) Console.WriteLine(pack);
         }
 
+
+        static void Task_base_13_4_2() //13.4 Задачи среднего уровня. Мальчики и девочки
+        {
+            string input_kids = Console.ReadLine();
+            Queue<string> kids = new Queue<string>(input_kids.Split(' '));
+            string input_plates = Console.ReadLine();
+            Queue<string> plates = new Queue<string>(input_plates.Split(' '));
+            bool stop = false;
+            while (plates.Count > 0 && kids.Count > 0 && !stop)
+            {
+                string plate = plates.Peek();
+                string kid = kids.Peek();
+                if (kid == plate)
+                {
+                    plates.Dequeue();
+                    kids.Dequeue();
+                }
+                else
+                {
+                    if (kids.Contains(plate))
+                        kids.Enqueue(kids.Dequeue());
+                    else stop = true;
+                }
+            }
+            Console.WriteLine(kids.Count);
+        }
+
     }
 }
+
