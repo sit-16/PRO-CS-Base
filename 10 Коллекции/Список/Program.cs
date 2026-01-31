@@ -53,7 +53,8 @@ namespace Список
                 //Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
                 //Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
                 //Task_base_14_2_7();//14.2 Задачи базового уровня. Элементы
-                Task_base_14_2_8();//14.2 Задачи базового уровня. Совпадение
+                //Task_base_14_2_8();//14.2 Задачи базового уровня. Совпадение
+                Task_base_14_2_9();//14.2 Задачи базового уровня. Уникальный
             }
         }
 
@@ -1042,6 +1043,17 @@ namespace Список
             angelina.IntersectWith(ulia);
 
             foreach (string s in angelina) Console.WriteLine(s);
+        }
+    
+    
+        static void Task_base_14_2_9() //14.2 Задачи базового уровня. Уникальный
+        {
+            string input_str1 = Console.ReadLine();
+            HashSet<string> str1 = new HashSet<string>(input_str1.Split(' '));
+            string input_str2 = Console.ReadLine();
+            HashSet<string> str2 = new HashSet<string>(input_str2.Split(' '));
+            str1.ExceptWith(str2);
+            foreach (string s in str1) Console.WriteLine(s);
         }
     }
 }
