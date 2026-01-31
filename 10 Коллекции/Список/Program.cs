@@ -52,7 +52,8 @@ namespace Список
                 //Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
                 //Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
                 //Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
-                Task_base_14_2_7();//14.2 Задачи базового уровня. Элементы
+                //Task_base_14_2_7();//14.2 Задачи базового уровня. Элементы
+                Task_base_14_2_8();//14.2 Задачи базового уровня. Совпадение
             }
         }
 
@@ -1028,6 +1029,20 @@ namespace Список
             Console.WriteLine(string.Join("***", hst));
         }
 
+        static void Task_base_14_2_8() //14.2 Задачи базового уровня. Совпадение
+        {
+            HashSet<string> angelina = new HashSet<string>();
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++) angelina.Add(Console.ReadLine());
+
+            HashSet<string> ulia = new HashSet<string>();
+            int m = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < m; i++) ulia.Add(Console.ReadLine());
+
+            angelina.IntersectWith(ulia);
+
+            foreach (string s in angelina) Console.WriteLine(s);
+        }
     }
 }
 
