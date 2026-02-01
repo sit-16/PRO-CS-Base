@@ -52,9 +52,10 @@ namespace Список
                 //Task_base_13_3_2(); //13.3 Задачи легкого уровня. Очередь в поликлинике
                 //Task_base_13_4_1(); //13.4 Задачи среднего уровня. Коммутатор
                 //Task_base_13_4_2(); //13.4 Задачи среднего уровня. Мальчики и девочки
-                //Task_base_14_2_7();//14.2 Задачи базового уровня. Элементы
-                //Task_base_14_2_8();//14.2 Задачи базового уровня. Совпадение
-                Task_base_14_2_9();//14.2 Задачи базового уровня. Уникальный
+                //Task_base_14_2_7(); //14.2 Задачи базового уровня. Элементы
+                //Task_base_14_2_8(); //14.2 Задачи базового уровня. Совпадение
+                //Task_base_14_2_9(); //14.2 Задачи базового уровня. Уникальный
+                Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
             }
         }
 
@@ -1044,8 +1045,8 @@ namespace Список
 
             foreach (string s in angelina) Console.WriteLine(s);
         }
-    
-    
+
+
         static void Task_base_14_2_9() //14.2 Задачи базового уровня. Уникальный
         {
             string input_str1 = Console.ReadLine();
@@ -1054,6 +1055,24 @@ namespace Список
             HashSet<string> str2 = new HashSet<string>(input_str2.Split(' '));
             str1.ExceptWith(str2);
             foreach (string s in str1) Console.WriteLine(s);
+        }
+
+        static void Task_base_14_3_1() //14.3 Задачи легкого уровня. Список курсов 2
+        {
+            HashSet<string> fact = new HashSet<string>();
+            int n_fact = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_fact; i++)
+                fact.Add(Console.ReadLine());
+
+            HashSet<string> plan = new HashSet<string>();
+            int m_plan = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < m_plan; i++)
+                plan.Add(Console.ReadLine());
+
+            foreach (string st in plan)
+                if (fact.Contains(st))
+                    Console.WriteLine("YES");
+                else Console.WriteLine("NO");
         }
     }
 }
