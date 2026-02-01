@@ -55,7 +55,8 @@ namespace Список
                 //Task_base_14_2_7(); //14.2 Задачи базового уровня. Элементы
                 //Task_base_14_2_8(); //14.2 Задачи базового уровня. Совпадение
                 //Task_base_14_2_9(); //14.2 Задачи базового уровня. Уникальный
-                Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
+                //Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
+                Task_base_14_3_2(); //14.3 Задачи легкого уровня.Тимур и Артур
             }
         }
 
@@ -1073,6 +1074,19 @@ namespace Список
                 if (fact.Contains(st))
                     Console.WriteLine("YES");
                 else Console.WriteLine("NO");
+        }
+
+
+        static void Task_base_14_3_2() //14.3 Задачи легкого уровня.Тимур и Артур
+        {
+            HashSet<string> cities = new HashSet<string>();
+            int n_city = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_city; i++)
+                cities.Add(Console.ReadLine());
+            if (cities.Add(Console.ReadLine()))
+                Console.WriteLine("OK");
+            else
+                Console.WriteLine("EXIST");
         }
     }
 }
