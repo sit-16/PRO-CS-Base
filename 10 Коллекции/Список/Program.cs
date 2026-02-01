@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -13,7 +14,7 @@ namespace Список
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 4; i++)
             {
                 //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
                 //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
@@ -56,7 +57,8 @@ namespace Список
                 //Task_base_14_2_8(); //14.2 Задачи базового уровня. Совпадение
                 //Task_base_14_2_9(); //14.2 Задачи базового уровня. Уникальный
                 //Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
-                Task_base_14_3_2(); //14.3 Задачи легкого уровня.Тимур и Артур
+                //Task_base_14_3_2(); //14.3 Задачи легкого уровня.Тимур и Артур
+                Task_base_14_3_3(); //14.3 Задачи легкого уровня. Однофамильцы
             }
         }
 
@@ -1087,6 +1089,31 @@ namespace Список
                 Console.WriteLine("OK");
             else
                 Console.WriteLine("EXIST");
+        }
+
+        static void Task_base_14_3_3() //14.3 Задачи легкого уровня. Однофамильцы
+        {
+            List<string> students = new List<string>();
+            int n_students = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_students; i++)
+                students.Add(Console.ReadLine());
+
+            HashSet<string> students_unic = new HashSet<string>(students);
+            int same_name = 0;
+            foreach (string name in students_unic)
+            {
+                int index = 0;
+                int counter = 0;
+                while (true)
+                {
+                    index = students.IndexOf(name);
+                    if (index == -1) break;
+                    counter++;
+                    students.RemoveAt(index);
+                }
+                if (counter > 1) same_name += counter;
+            }
+            Console.WriteLine(same_name);
         }
     }
 }
