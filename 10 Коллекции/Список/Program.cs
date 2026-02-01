@@ -58,7 +58,8 @@ namespace Список
                 //Task_base_14_2_9(); //14.2 Задачи базового уровня. Уникальный
                 //Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
                 //Task_base_14_3_2(); //14.3 Задачи легкого уровня.Тимур и Артур
-                Task_base_14_3_3(); //14.3 Задачи легкого уровня. Однофамильцы
+                //Task_base_14_3_3(); //14.3 Задачи легкого уровня. Однофамильцы
+                Task_base_14_4_1(); //14.4 Задачи среднего уровня. Ученики онлайн-школы
             }
         }
 
@@ -1114,6 +1115,26 @@ namespace Список
                 if (counter > 1) same_name += counter;
             }
             Console.WriteLine(same_name);
+        }
+
+
+        static void Task_base_14_4_1() //14.4 Задачи среднего уровня. Ученики онлайн-школы 
+        {
+            HashSet<string> csh = new HashSet<string>();
+            int n_stud_csh = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_stud_csh; i++)
+                csh.Add(Console.ReadLine());
+
+            HashSet<string> kotlin = new HashSet<string>();
+            int n_stud_kotlin = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_stud_kotlin; i++)
+                kotlin.Add(Console.ReadLine());
+
+            HashSet<string> both = new HashSet<string>(csh);
+            both.IntersectWith(kotlin);
+
+            int res = csh.Count + kotlin.Count - both.Count * 2;
+            Console.WriteLine(res > 0 ? res.ToString() : "NO");
         }
     }
 }
