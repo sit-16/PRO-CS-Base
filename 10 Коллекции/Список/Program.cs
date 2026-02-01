@@ -59,7 +59,8 @@ namespace Список
                 //Task_base_14_3_1(); //14.3 Задачи легкого уровня. Список курсов 2                
                 //Task_base_14_3_2(); //14.3 Задачи легкого уровня.Тимур и Артур
                 //Task_base_14_3_3(); //14.3 Задачи легкого уровня. Однофамильцы
-                Task_base_14_4_1(); //14.4 Задачи среднего уровня. Ученики онлайн-школы
+                //Task_base_14_4_1(); //14.4 Задачи среднего уровня. Ученики онлайн-школы
+                Task_base_14_4_2(); //14.4 Задачи среднего уровня. Тетради учеников
             }
         }
 
@@ -1135,6 +1136,27 @@ namespace Список
 
             int res = csh.Count + kotlin.Count - both.Count * 2;
             Console.WriteLine(res > 0 ? res.ToString() : "NO");
+        }
+
+        static void Task_base_14_4_2() //14.4 Задачи среднего уровня. Тетради учеников
+        {
+            List<HashSet<string>> all_ntb = new List<HashSet<string>>();
+            int n_subj = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n_subj; i++)
+            {
+                all_ntb.Add(new HashSet<string>());
+                int n_stud = Convert.ToInt32(Console.ReadLine());
+                for (int j = 0; j < n_stud; j++)
+                {
+                    all_ntb[all_ntb.Count - 1].Add(Console.ReadLine());
+                }
+            }
+            HashSet<string> resultSet = new HashSet<string>(all_ntb[0]);
+            foreach (var hash in all_ntb)
+            {
+                resultSet.IntersectWith(hash);
+            }
+            Console.WriteLine(resultSet.Count);
         }
     }
 }
