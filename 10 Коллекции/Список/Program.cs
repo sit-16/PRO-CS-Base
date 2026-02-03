@@ -65,7 +65,8 @@ namespace Список
                 //Task_base_15_2_6(); //15.2 Задачи базового уровня. Вывод значения
                 //Task_base_15_2_7(); //15.2 Задачи базового уровня. Продукты 
                 //Task_base_15_2_8(); //15.2 Задачи базового уровня. Объединение словарей
-                Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells                
+                //Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells
+                Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
             }
         }
 
@@ -1271,6 +1272,30 @@ namespace Список
             foreach (var v in products) { summ += v.Value; }
 
             return summ;
+        }
+
+        static void Task_base_15_2_10() //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>
+            {
+                { "ID25489472", "Петров" },
+                { "№0374", "мовсгу" },
+                { "Дисплей", "oled" }
+            };
+
+            foreach (var pair in ConvertValuesToUpper(dict))
+            {
+                Console.WriteLine($"{pair.Key} {pair.Value}");
+            }
+        }
+
+        static Dictionary<string, string> ConvertValuesToUpper(Dictionary<string, string> dict)
+        {
+            foreach (var pair in dict) 
+            {
+                dict[pair.Key] = pair.Value.ToUpper();
+            }
+            return dict;
         }
     }
 }
