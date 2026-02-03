@@ -61,7 +61,8 @@ namespace Список
                 //Task_base_14_3_3(); //14.3 Задачи легкого уровня. Однофамильцы
                 //Task_base_14_4_1(); //14.4 Задачи среднего уровня. Ученики онлайн-школы
                 //Task_base_14_4_2(); //14.4 Задачи среднего уровня. Тетради учеников
-                Task_base_15_2_5(); //15.2 Задачи базового уровня.Пары
+                //Task_base_15_2_5(); //15.2 Задачи базового уровня.Пары
+                Task_base_15_2_6(); //15.2 Задачи базового уровня.Вывод значения
             }
         }
 
@@ -1173,7 +1174,20 @@ namespace Список
             {
                 Console.WriteLine($"Ключ: {pair.Key}, значение: {pair.Value}");
             }
+        }
 
+
+        public static void Task_base_15_2_6() //15.2 Задачи базового уровня.Вывод значения
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(' ');
+                dict.Add(input[0], input[1]);
+            }
+            string key = Console.ReadLine();
+            if (dict.ContainsKey(key)) Console.WriteLine(dict[key]);
         }
     }
 }
