@@ -14,7 +14,7 @@ namespace Список
     {
         static void Main(string[] args)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 1; i++)
             {
                 //Task_base_11_2_1(); //11.2 Задачи базового уровня.Заполни список
                 //Task_base_11_2_2(); //11.2 Задачи базового уровня. Вывод чисел
@@ -63,7 +63,9 @@ namespace Список
                 //Task_base_14_4_2(); //14.4 Задачи среднего уровня. Тетради учеников
                 //Task_base_15_2_5(); //15.2 Задачи базового уровня. Пары
                 //Task_base_15_2_6(); //15.2 Задачи базового уровня. Вывод значения
-                Task_base_15_2_7(); //15.2 Задачи базового уровня. Продукты 
+                //Task_base_15_2_7(); //15.2 Задачи базового уровня. Продукты 
+                //Task_base_15_2_8(); //15.2 Задачи базового уровня. Объединение словарей
+                Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells                
             }
         }
 
@@ -1206,6 +1208,70 @@ namespace Список
                 if (product.Value < limit) Console.WriteLine(product.Key);
         }
 
+        static void Task_base_15_2_8() //15.2 Задачи базового уровня. Объединение словарей
+        {
+            // Словарь 1
+            Dictionary<int, string> dictionary1 = new Dictionary<int, string>()
+            {
+                [1] = "Val1",
+                [3] = "Val3",
+                [5] = "Val5"
+            };
+
+            // Словарь 2
+            Dictionary<int, string> dictionary2 = new Dictionary<int, string>()
+            {
+                [1] = "Val11",
+                [2] = "Val2",
+                [4] = "Val4"
+            };
+
+            // Объединение словарей
+            Dictionary<int, string> combinedDictionary = CombineDictionaries(dictionary1, dictionary2);
+
+            // Вывод результата
+            foreach (var item in combinedDictionary)
+            {
+                Console.WriteLine($"Key: {item.Key}, Value: {item.Value}");
+            }
+        }
+
+
+        static Dictionary<int, string> CombineDictionaries(Dictionary<int, string> dict1, Dictionary<int, string> dict2)
+        {
+            Dictionary<int, string> combo = new Dictionary<int, string>();
+
+            foreach (var pair in dict1)
+                combo.Add(pair.Key, pair.Value);
+
+            foreach (var pair in dict2)
+                combo.TryAdd(pair.Key, pair.Value);
+
+            return combo;
+        }
+
+        static void Task_base_15_2_9() //15.2 Задачи базового уровня. Jingle Bells
+        {
+            Dictionary<string, int> products = new Dictionary<string, int>
+            {
+                { "Гирлянда", 1350 },
+                { "Снежинки", 670 },
+                { "Мишура", 780 },
+                { "Подсвечник", 480 },
+                { "Свечи", 670 },
+                { "Дождик", 1200 }
+            };
+
+            Console.WriteLine(CalculateTotal(products));
+        }
+
+        static int CalculateTotal(Dictionary<string, int> products)
+        {
+            int summ = 0;
+            foreach (var v in products) { summ += v.Value; }
+
+            return summ;
+        }
     }
 }
 
