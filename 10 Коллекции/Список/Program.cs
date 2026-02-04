@@ -67,7 +67,8 @@ namespace Список
                 //Task_base_15_2_8(); //15.2 Задачи базового уровня. Объединение словарей
                 //Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells
                 //Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
-                Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
+                //Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
+                Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
             }
         }
 
@@ -1292,7 +1293,7 @@ namespace Список
 
         static Dictionary<string, string> ConvertValuesToUpper(Dictionary<string, string> dict)
         {
-            foreach (var pair in dict) 
+            foreach (var pair in dict)
             {
                 dict[pair.Key] = pair.Value.ToUpper();
             }
@@ -1314,9 +1315,36 @@ namespace Список
             string reqwest = Console.ReadLine();
             string result = "Unknown word.";
             if (vacabluary.ContainsKey(reqwest))
-                result = vacabluary[reqwest];          
+                result = vacabluary[reqwest];
 
             Console.WriteLine(result);
+        }
+
+        static void Task_base_15_3_2() //15.2 Задачи базового уровня. Страны и города
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string, string> cites = new Dictionary<string, string>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(' ');
+                for (int j = 1; j < input.Length; j++)
+                    cites.Add(input[j], input[0]);
+            }
+
+            n = int.Parse(Console.ReadLine());
+            string[] reqwests = new string[n];
+            for (int i = 0; i < n; i++)
+            {
+                reqwests[i] = Console.ReadLine();
+            }
+
+            foreach (var reqwest in reqwests)
+            {
+                string result = "Unknown city.";
+                if (cites.ContainsKey(reqwest))
+                    result = cites[reqwest];
+                Console.WriteLine(result);
+            }
         }
     }
 }
