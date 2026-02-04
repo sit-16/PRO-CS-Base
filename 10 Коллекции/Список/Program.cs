@@ -68,7 +68,8 @@ namespace Список
                 //Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells
                 //Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
                 //Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
-                Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
+                //Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
+                Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
             }
         }
 
@@ -1346,6 +1347,28 @@ namespace Список
                 Console.WriteLine(result);
             }
         }
+
+
+        static void Task_base_15_3_3() //15.2 Задачи базового уровня. Исправление дубликатов
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            string[] result = new string[input.Length];
+            for (int i = 0; i < input.Length; i++)
+            {
+                string s = input[i];
+                if (!dict.ContainsKey(s))
+                {
+                    dict.Add(s, 0);
+                    result[i] = s;
+                }
+                else
+                {
+                    dict[s]++;
+                    result[i] = $"{s}_{dict[s]}";
+                }
+            }
+            Console.WriteLine(string.Join(" ", result));
+        }
     }
 }
-
