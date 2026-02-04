@@ -66,7 +66,8 @@ namespace Список
                 //Task_base_15_2_7(); //15.2 Задачи базового уровня. Продукты 
                 //Task_base_15_2_8(); //15.2 Задачи базового уровня. Объединение словарей
                 //Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells
-                Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
+                //Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
+                Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
             }
         }
 
@@ -1296,6 +1297,26 @@ namespace Список
                 dict[pair.Key] = pair.Value.ToUpper();
             }
             return dict;
+        }
+
+
+        static void Task_base_15_3_1() //15.2 Задачи базового уровня. Словарь синонимов
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string, string> vacabluary = new Dictionary<string, string>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(' ');
+                vacabluary.Add(input[0], input[1]);
+                vacabluary.Add(input[1], input[0]);
+            }
+
+            string reqwest = Console.ReadLine();
+            string result = "Unknown word.";
+            if (vacabluary.ContainsKey(reqwest))
+                result = vacabluary[reqwest];          
+
+            Console.WriteLine(result);
         }
     }
 }
