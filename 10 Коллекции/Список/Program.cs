@@ -69,7 +69,8 @@ namespace Список
                 //Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
                 //Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
                 //Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
-                Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
+                //Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
+                Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
             }
         }
 
@@ -1369,6 +1370,32 @@ namespace Список
                 }
             }
             Console.WriteLine(string.Join(" ", result));
+        }
+
+
+        static void Task_base_15_3_4() //15.2 Задачи базового уровня. Хотим "посидеть" 2
+        {
+            Dictionary<string, int> week = new Dictionary<string, int>()
+            {
+                {"пн", 0},
+                {"вт", 0},
+                {"ср", 0},
+                {"чт", 0},
+                {"пт", 0},
+                {"сб", 0},
+                {"вс", 0}
+            };
+            int fr = int.Parse(Console.ReadLine());
+            for (int i = 0; i < fr; i++)
+            {
+                string[] frDays = Console.ReadLine().Split(' ');
+                foreach (var day in frDays)
+                    week[day]++;
+            }
+
+            foreach (var day in week)
+                if (day.Value > 0)
+                    Console.WriteLine($"{day.Key} {day.Value}");
         }
     }
 }
