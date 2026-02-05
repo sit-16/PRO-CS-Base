@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -72,7 +73,8 @@ namespace Список
                 //Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
                 //Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
                 //Task_base_15_3_5(); //15.2 Задачи базового уровня. Мотивация
-                Task_base_15_3_6(); //15.2 Задачи базового уровня. Анаграммы 1
+                //Task_base_15_3_6(); //15.2 Задачи базового уровня. Анаграммы 1
+                Task_base_15_3_7(); //15.2 Задачи базового уровня. Первичная обработка текстов LLM
             }
         }
 
@@ -1457,6 +1459,21 @@ namespace Список
                 }
             }
             Console.WriteLine("YES");
+        }
+
+
+        static void Task_base_15_3_7() //15.2 Задачи базового уровня. Первичная обработка текстов LLM
+        {
+            string[] input = Console.ReadLine().ToLower().Split(' ');
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            foreach (string s in input)
+            {
+                if (dict.ContainsKey(s))
+                    dict[s]++;
+                else
+                    dict.Add(s, 1);
+                Console.Write(dict[s].ToString() + ' ');
+            }
         }
     }
 }
