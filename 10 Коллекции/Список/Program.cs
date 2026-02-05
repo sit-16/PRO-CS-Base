@@ -71,7 +71,8 @@ namespace Список
                 //Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
                 //Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
                 //Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
-                Task_base_15_3_5(); //15.2 Задачи базового уровня. Мотивация
+                //Task_base_15_3_5(); //15.2 Задачи базового уровня. Мотивация
+                Task_base_15_3_6(); //15.2 Задачи базового уровня. Анаграммы 1
             }
         }
 
@@ -1419,6 +1420,43 @@ namespace Список
 
             foreach (var student in dayList)
                 Console.WriteLine($"Студент {student.Key} решил(а) {student.Value} задач");
+        }
+
+
+        static void Task_base_15_3_6() //15.2 Задачи базового уровня. Анаграммы 1
+        {
+            string wFw = Console.ReadLine();
+            string wBw = Console.ReadLine();
+            if (wFw.Length != wBw.Length)
+            {
+                Console.WriteLine("NO");
+                return;
+            }
+            Dictionary<int, char> anagramm = new Dictionary<int, char>();
+            for (int i = 0; i < wFw.Length; i++)
+            {
+                anagramm.Add(i, wFw[i]);
+            }
+            foreach (var c in wBw)
+            {
+                if (anagramm.ContainsValue(c))
+                {
+                    foreach (var rec in anagramm)
+                    {
+                        if (rec.Value == c)
+                        {
+                            anagramm.Remove(rec.Key);
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("NO");
+                    return;
+                }
+            }
+            Console.WriteLine("YES");
         }
     }
 }
