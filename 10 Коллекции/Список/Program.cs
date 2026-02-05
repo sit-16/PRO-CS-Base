@@ -70,7 +70,8 @@ namespace Список
                 //Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
                 //Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
                 //Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
-                Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
+                //Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
+                Task_base_15_3_5(); //15.2 Задачи базового уровня. Мотивация
             }
         }
 
@@ -1396,6 +1397,28 @@ namespace Список
             foreach (var day in week)
                 if (day.Value > 0)
                     Console.WriteLine($"{day.Key} {day.Value}");
+        }
+        static void Task_base_15_3_5() //15.2 Задачи базового уровня. Мотивация
+        {
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<string, int> dayList = new Dictionary<string, int>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] student1 = Console.ReadLine().Split(' ');
+                dayList.Add(student1[0], int.Parse(student1[1]));
+            }
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                string[] student2 = Console.ReadLine().Split(' ');
+                if (dayList.ContainsKey(student2[0]))
+                    dayList[student2[0]] += int.Parse(student2[1]);
+                else
+                    dayList.Add(student2[0], int.Parse(student2[1]));
+            }
+
+            foreach (var student in dayList)
+                Console.WriteLine($"Студент {student.Key} решил(а) {student.Value} задач");
         }
     }
 }
