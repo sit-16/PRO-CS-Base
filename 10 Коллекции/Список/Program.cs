@@ -74,7 +74,8 @@ namespace Список
                 //Task_base_15_3_4(); //15.3 Задачи лёгкого уровня. Хотим "посидеть" 2
                 //Task_base_15_3_5(); //15.3 Задачи лёгкого уровня. Мотивация
                 //Task_base_15_3_6(); //15.3 Задачи лёгкого уровня. Анаграммы 1
-                Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
+                //Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
+                Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
             }
         }
 
@@ -1474,6 +1475,31 @@ namespace Список
                     dict.Add(s, 1);
                 Console.Write(dict[s].ToString() + ' ');
             }
+        }
+
+
+        static void Task_base_15_4_2() //15.4 Задачи среднего уровня. Секретное слово
+        {
+            string word = Console.ReadLine();
+            Dictionary<char, int> wDict = new Dictionary<char, int>();
+            foreach (var c in word)
+            {
+                if (wDict.ContainsKey(c))
+                    wDict[c]++;
+                else
+                    wDict.Add(c, 1);
+            }
+
+            int n = int.Parse(Console.ReadLine());
+            Dictionary<int, char> frDict = new Dictionary<int, char>();
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(": ");
+                frDict.Add(int.Parse(input[1]), input[0][0]);
+            }
+
+            foreach (var c in word)
+                Console.Write(frDict[wDict[c]]);
         }
     }
 }
