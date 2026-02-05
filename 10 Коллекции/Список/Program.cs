@@ -68,13 +68,13 @@ namespace Список
                 //Task_base_15_2_8(); //15.2 Задачи базового уровня. Объединение словарей
                 //Task_base_15_2_9(); //15.2 Задачи базового уровня. Jingle Bells
                 //Task_base_15_2_10(); //15.2 Задачи базового уровня. ВЕРХНИЙ РЕГИСТР
-                //Task_base_15_3_1(); //15.2 Задачи базового уровня. Словарь синонимов
-                //Task_base_15_3_2(); //15.2 Задачи базового уровня. Страны и города
-                //Task_base_15_3_3(); //15.2 Задачи базового уровня. Исправление дубликатов
-                //Task_base_15_3_4(); //15.2 Задачи базового уровня. Хотим "посидеть" 2
-                //Task_base_15_3_5(); //15.2 Задачи базового уровня. Мотивация
-                //Task_base_15_3_6(); //15.2 Задачи базового уровня. Анаграммы 1
-                Task_base_15_3_7(); //15.2 Задачи базового уровня. Первичная обработка текстов LLM
+                //Task_base_15_3_1(); //15.3 Задачи лёгкого уровня. Словарь синонимов
+                //Task_base_15_3_2(); //15.3 Задачи лёгкого уровня. Страны и города
+                //Task_base_15_3_3(); //15.3 Задачи лёгкого уровня. Исправление дубликатов
+                //Task_base_15_3_4(); //15.3 Задачи лёгкого уровня. Хотим "посидеть" 2
+                //Task_base_15_3_5(); //15.3 Задачи лёгкого уровня. Мотивация
+                //Task_base_15_3_6(); //15.3 Задачи лёгкого уровня. Анаграммы 1
+                Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
             }
         }
 
@@ -1202,7 +1202,7 @@ namespace Список
             if (dict.ContainsKey(key)) Console.WriteLine(dict[key]);
         }
 
-        static void Task_base_15_2_7() //15.2 Задачи базового уровня. Продукты 
+        static void Task_base_15_2_7() //15.3 Задачи лёгкого уровня. Продукты 
         {
             int n = int.Parse(Console.ReadLine());
             Dictionary<string, int> grocery = new Dictionary<string, int>();
@@ -1217,7 +1217,7 @@ namespace Список
                 if (product.Value < limit) Console.WriteLine(product.Key);
         }
 
-        static void Task_base_15_2_8() //15.2 Задачи базового уровня. Объединение словарей
+        static void Task_base_15_2_8() //15.3 Задачи лёгкого уровня. Объединение словарей
         {
             // Словарь 1
             Dictionary<int, string> dictionary1 = new Dictionary<int, string>()
@@ -1307,7 +1307,7 @@ namespace Список
         }
 
 
-        static void Task_base_15_3_1() //15.2 Задачи базового уровня. Словарь синонимов
+        static void Task_base_15_3_1() //15.3 Задачи лёгкого уровня. Словарь синонимов
         {
             int n = int.Parse(Console.ReadLine());
             Dictionary<string, string> vacabluary = new Dictionary<string, string>();
@@ -1326,7 +1326,7 @@ namespace Список
             Console.WriteLine(result);
         }
 
-        static void Task_base_15_3_2() //15.2 Задачи базового уровня. Страны и города
+        static void Task_base_15_3_2() //15.3 Задачи лёгкого уровня. Страны и города
         {
             int n = int.Parse(Console.ReadLine());
             Dictionary<string, string> cites = new Dictionary<string, string>();
@@ -1354,7 +1354,7 @@ namespace Список
         }
 
 
-        static void Task_base_15_3_3() //15.2 Задачи базового уровня. Исправление дубликатов
+        static void Task_base_15_3_3() //15.3 Задачи лёгкого уровня. Исправление дубликатов
         {
             string[] input = Console.ReadLine().Split(' ');
             Dictionary<string, int> dict = new Dictionary<string, int>();
@@ -1377,7 +1377,7 @@ namespace Список
         }
 
 
-        static void Task_base_15_3_4() //15.2 Задачи базового уровня. Хотим "посидеть" 2
+        static void Task_base_15_3_4() //15.3 Задачи лёгкого уровня. Хотим "посидеть" 2
         {
             Dictionary<string, int> week = new Dictionary<string, int>()
             {
@@ -1401,7 +1401,7 @@ namespace Список
                 if (day.Value > 0)
                     Console.WriteLine($"{day.Key} {day.Value}");
         }
-        static void Task_base_15_3_5() //15.2 Задачи базового уровня. Мотивация
+        static void Task_base_15_3_5() //15.3 Задачи лёгкого уровня. Мотивация
         {
             int n = int.Parse(Console.ReadLine());
             Dictionary<string, int> dayList = new Dictionary<string, int>();
@@ -1425,7 +1425,7 @@ namespace Список
         }
 
 
-        static void Task_base_15_3_6() //15.2 Задачи базового уровня. Анаграммы 1
+        static void Task_base_15_3_6() //15.3 Задачи лёгкого уровня. Анаграммы 1
         {
             string wFw = Console.ReadLine();
             string wBw = Console.ReadLine();
@@ -1462,7 +1462,7 @@ namespace Список
         }
 
 
-        static void Task_base_15_3_7() //15.2 Задачи базового уровня. Первичная обработка текстов LLM
+        static void Task_base_15_4_1() //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
         {
             string[] input = Console.ReadLine().ToLower().Split(' ');
             Dictionary<string, int> dict = new Dictionary<string, int>();
