@@ -75,7 +75,8 @@ namespace Список
                 //Task_base_15_3_5(); //15.3 Задачи лёгкого уровня. Мотивация
                 //Task_base_15_3_6(); //15.3 Задачи лёгкого уровня. Анаграммы 1
                 //Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
-                Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
+                //Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
+                Task_base_15_4_3(); //15.4 Задачи среднего уровня. Анаграммы 2
             }
         }
 
@@ -1500,6 +1501,44 @@ namespace Список
 
             foreach (var c in word)
                 Console.Write(frDict[wDict[c]]);
+        }
+
+        static string RemoveOdd(string st)
+        {
+            List<char> letters = new List<char>();
+            foreach (char ch in st)
+                if (char.IsLetter(ch) && !char.IsWhiteSpace(ch))
+                    letters.Add(char.ToLower(ch));
+            string lettersStr = new string(letters.ToArray());
+            return lettersStr;
+        }
+
+        static void Task_base_15_4_3() //15.4 Задачи среднего уровня. Анаграммы 2
+        {
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            string sentence1 = RemoveOdd(Console.ReadLine());//("Вижу зверей");
+            string sentence2 = RemoveOdd(Console.ReadLine());//("Живу резвей");
+
+            int i = 0;
+            bool failure = false;
+            foreach (char ch in sentence1)
+                if (dict.ContainsKey(ch)) dict[ch]++;
+                else dict[ch] = 1;
+
+            for (int j = 0; j < sentence2.Length; j++)
+            {
+                char ch = sentence2[j];
+                if (dict.ContainsKey(ch))
+                    if (dict[ch] > 1) dict[ch]--;
+                    else dict.Remove(ch);
+                else
+                {
+                    failure = true;
+                    break;
+                }
+            }
+            if (!failure && dict.Count == 0) Console.WriteLine("YES");
+            else Console.WriteLine("NO");
         }
     }
 }
