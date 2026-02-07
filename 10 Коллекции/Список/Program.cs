@@ -76,7 +76,8 @@ namespace Список
                 //Task_base_15_3_6(); //15.3 Задачи лёгкого уровня. Анаграммы 1
                 //Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
                 //Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
-                Task_base_15_4_3(); //15.4 Задачи среднего уровня. Анаграммы 2
+                //Task_base_15_4_3(); //15.4 Задачи среднего уровня. Анаграммы 2
+                Task_base_15_4_4(); //15.4 Задачи среднего уровня. Парикмахер
             }
         }
 
@@ -1540,5 +1541,45 @@ namespace Список
             if (!failure && dict.Count == 0) Console.WriteLine("YES");
             else Console.WriteLine("NO");
         }
+
+
+        static void Task_base_15_4_4() //15.4 Задачи среднего уровня. Парикмахер
+        {
+            var skills = new Dictionary<string, HashSet<char>>();
+            var appointment = new Dictionary<string, HashSet<char>>();
+            var barberType = new Dictionary<string, char>()
+            {
+                {"man", 'M'},
+                {"woman", 'W'},
+                {"children", 'C'}
+            };
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(' ');
+                var set = new HashSet<char>();
+                for (int j = 1; j < input.Length; j++) set.Add(input[j][0]);
+                if (skills.ContainsKey(input[0])) skills[input[0]].UnionWith(set);
+                else skills[input[0]] = set;
+            }
+
+            n = int.Parse(Console.ReadLine());
+            var barber = new string[n];
+            var client = new char[n];
+            for (int i = 0; i < n; i++)
+            {
+                string[] input = Console.ReadLine().Split(' ');
+                barber[i] = input[1];
+                client[i] = barberType[input[0]];
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (skills[barber[i]].Contains(client[i]))
+                    Console.WriteLine("YES");
+                else Console.WriteLine("NO");
+            }
+        }
+
     }
 }
