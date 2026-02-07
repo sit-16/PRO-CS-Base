@@ -77,7 +77,8 @@ namespace Список
                 //Task_base_15_4_1(); //15.4 Задачи среднего уровня. Первичная обработка текстов LLM
                 //Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
                 //Task_base_15_4_3(); //15.4 Задачи среднего уровня. Анаграммы 2
-                Task_base_15_4_4(); //15.4 Задачи среднего уровня. Парикмахер
+                //Task_base_15_4_4(); //15.4 Задачи среднего уровня. Парикмахер
+                Task_base_15_5_1(); //15.5 Задачи повышенного уровня. Интернет-магазин
             }
         }
 
@@ -1581,5 +1582,52 @@ namespace Список
             }
         }
 
+        static int GetPrice(string st)
+        {
+            string price = "";
+            foreach (char ch in st)
+                if (char.IsDigit(ch)) price += ch;
+            return int.Parse(price);
+        }
+
+        static void Task_base_15_5_1() //15.5 Задачи повышенного уровня. Интернет-магазин
+        {
+            int n = int.Parse(Console.ReadLine());
+            var store = new Dictionary<string, int>();
+            var site = new Dictionary<string, int>();
+            string tytle;
+            int price;
+            for (int i = 0; i < n; i++)
+            {
+                string[] suply = Console.ReadLine().Split(": ");
+                tytle = suply[0];
+                price = GetPrice(suply[1]);
+                store.Add(tytle, price);
+            }
+            string input = Console.ReadLine();
+            string stop = "</html>";
+            while (input != stop)
+            {
+                if (input.Contains("<li>"))
+                {
+                    int startPos = input.IndexOf('>') + 1;
+                    int midPos = input.IndexOf(':');
+                    int endPos = input.LastIndexOf('р');
+                    tytle = input[startPos..midPos];
+                    price = GetPrice(input[midPos..endPos]);
+                    site.Add(tytle, price);
+                }
+                input = Console.ReadLine();
+            }
+            int counter = 0;
+            foreach (var suply in store)
+            {
+                tytle = suply.Key;
+                price = site.ContainsKey(tytle) ? site[tytle] - suply.Value : 0;
+                counter += price; 
+                Console.WriteLine($"{tytle}: {price} руб");
+            }
+            Console.WriteLine($"Итого: {counter} руб");
+        }
     }
 }
