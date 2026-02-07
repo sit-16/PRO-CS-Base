@@ -78,7 +78,8 @@ namespace Список
                 //Task_base_15_4_2(); //15.4 Задачи среднего уровня. Секретное слово
                 //Task_base_15_4_3(); //15.4 Задачи среднего уровня. Анаграммы 2
                 //Task_base_15_4_4(); //15.4 Задачи среднего уровня. Парикмахер
-                Task_base_15_5_1(); //15.5 Задачи повышенного уровня. Интернет-магазин
+                //Task_base_15_5_1(); //15.5 Задачи повышенного уровня. Интернет-магазин
+                Task_base_15_5_2(); //15.5 Задачи повышенного уровня. Самое редкое слово
             }
         }
 
@@ -1628,6 +1629,30 @@ namespace Список
                 Console.WriteLine($"{tytle}: {price} руб");
             }
             Console.WriteLine($"Итого: {counter} руб");
+        }
+
+        static void Task_base_15_5_2() //15.5 Задачи повышенного уровня. Самое редкое слово
+        {
+            string input0 = Console.ReadLine();
+            string input1 = "";
+            foreach (char ch in input0)
+                if (char.IsLetter(ch) || char.IsWhiteSpace(ch)) input1 += char.ToLower(ch);
+            string[] input = input1.Split(' ');
+            var dict = new Dictionary<string, int>();
+            
+            foreach (var word in input)
+                if (dict.ContainsKey(word)) dict[word] += 1;
+                else dict[word] = 1;
+            
+            int minCount = input.Length;
+            foreach (var pair in dict) 
+                if (pair.Value < minCount) minCount = pair.Value;
+            
+            var minList = new List<string>();
+            foreach (var pair in dict)
+                if (pair.Value == minCount) minList.Add(pair.Key);
+            minList.Sort();
+            Console.WriteLine(minList[0]);
         }
     }
 }
