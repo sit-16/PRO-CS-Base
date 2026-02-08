@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualBasic;
+﻿/*using Microsoft.VisualBasic;
+using System.Collections;*/
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+/*using System.Linq;
 using System.Reflection;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Runtime.InteropServices.JavaScript.JSType;*/
 namespace Список
 {
     internal class Program
@@ -80,7 +80,8 @@ namespace Список
                 //Task_base_15_4_4(); //15.4 Задачи среднего уровня. Парикмахер
                 //Task_base_15_5_1(); //15.5 Задачи повышенного уровня. Интернет-магазин
                 //Task_base_15_5_2(); //15.5 Задачи повышенного уровня. Самое редкое слово
-                Task_base_16_2_2(); //16.2 Доп задания.Обратная польская нотация
+                //Task_base_16_2_2(); //16.2 Доп задания.Обратная польская нотация
+                Task_base_16_2_3(); //16.2 Доп задания.Обратная польская нотация 2
             }
         }
 
@@ -1656,6 +1657,7 @@ namespace Список
             Console.WriteLine(minList[0]);
         }
 
+        /*
         static void Task_base_16_2_2() //16.2 Доп задания.Обратная польская нотация
         {
             string expression = Console.ReadLine();
@@ -1745,6 +1747,112 @@ namespace Список
                         case '-': operands.Push(firstOperand - secondOperand); break;
                         case '*': operands.Push(firstOperand * secondOperand); break;
                         case '/': operands.Push(firstOperand / secondOperand); break;
+                    }
+                }
+            }
+            return operands.Peek();  // конечный результат вычислений будет находиться в вершине стека
+        }
+        */
+
+        static void Task_base_16_2_3() //16.2 Доп задания.Обратная польская нотация 2
+        {
+            string expression = Console.ReadLine();
+            Queue<string> reversePolishNotation;
+            reversePolishNotation = ProcessReversePolishNotation(expression);
+            PrintReversePolishNotation(reversePolishNotation);
+            Console.WriteLine(CalculatingReversPolishNotation(reversePolishNotation));
+        }
+
+        static Queue<string> ProcessReversePolishNotation(string expression)
+        {
+            string[] expressionSt = expression.Split(' ');
+            Queue<string> reversePolishNotation = new Queue<string>(); //очередь для добавления элементов выражения
+            var priority = new Dictionary<char, int>() // словарь для хранения значений приоритетов
+            {
+                ['+'] = 1,
+                ['-'] = 1,
+                ['*'] = 2,
+                ['/'] = 2,
+                ['^'] = 3
+            };
+            int bracketPriorityAddon = 0;
+            Stack<char> operators = new Stack<char>(); // стек для временного хранения операторов
+            Stack<int> operatorsBrPr = new Stack<int>(); // стек для временного хранения операторов
+
+            for (int i = 0; i < expressionSt.Length; i++)
+            {
+                char current = expressionSt[i][0]; // текущий символ
+                if (Char.IsDigit(current) || expressionSt[i].Length > 1)
+                {
+                    if (double.TryParse(expressionSt[i], out double res))
+                        reversePolishNotation.Enqueue(expressionSt[i]);
+                    else Console.WriteLine("Не число!");
+                }                
+                else if (IsBrackets(current) == 1) bracketPriorityAddon += 10;
+                else if (IsBrackets(current) == 2) bracketPriorityAddon -= 10;
+                else if (IsOperator(current)) // проверяем является ли символ оператором
+                {
+                    while (operators.Count > 0 && priority[current] + bracketPriorityAddon <= operatorsBrPr.Peek()) // пока стек не пустой и на его вершине оператор с приоритетом выше или равен текущему, то добавляем оператор из стека в очередь
+                    {
+                        reversePolishNotation.Enqueue(operators.Pop().ToString());
+                    }
+                    operators.Push(current); // добавляем текущий оператор в стек операторов
+                    operatorsBrPr.Push(priority[current] + bracketPriorityAddon);
+                }
+            }
+
+            while (operators.Count > 0) // если после перебора всех элементов строки в стеке остались операторы, то переносим их в очередь
+            {
+                reversePolishNotation.Enqueue(operators.Pop().ToString());
+            }
+
+            return reversePolishNotation; // возвращаем сформированную очередь
+        }
+
+        static bool IsOperator(char c) // функция определяющая является ли символ оператором
+        {
+            return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+        }
+        static int IsBrackets(char c) // функция определяющая является ли символ оператором
+        {
+            if (c == '(') return 1;
+            if (c == ')') return 2;
+            return 0;
+        }
+
+        static void PrintReversePolishNotation(Queue<string> reversePolishNotation) // функция для вывода на консоль элементов очереди
+        {
+            foreach (string st in reversePolishNotation)
+            {
+                Console.Write(st + ' ');
+            }
+            //Console.WriteLine(string.Join(' ', reversePolishNotation));
+        }
+        private static double CalculatingReversPolishNotation(Queue<string> reversePolishNotation)
+        {
+            Stack<double> operands = new Stack<double>(); // стек для хранения операндов
+            while (reversePolishNotation.Count > 0) // пока в очереди есть элементы
+            {
+                char current = reversePolishNotation.Peek()[0]; // текущий символ
+                if ((IsOperator(current) || IsBrackets(current) > 0) && reversePolishNotation.Peek().Length == 1) // если символ оператор, то из стека извлекается два операнда и к ним применяется данная операция
+                {
+                    double secondOperand = operands.Pop();
+                    double firstOperand = operands.Pop();
+                    switch (reversePolishNotation.Dequeue()[0]) // достаем из очереди оператор
+                    {
+                        case '+': operands.Push(firstOperand + secondOperand); break;
+                        case '-': operands.Push(firstOperand - secondOperand); break;
+                        case '*': operands.Push(firstOperand * secondOperand); break;
+                        case '/': operands.Push(firstOperand / secondOperand); break;
+                        case '^': operands.Push(Math.Pow(firstOperand, secondOperand)); break;
+                    }
+                }
+                else
+                {
+                    if (double.TryParse(reversePolishNotation.Peek(), out double operand)) // если символ является цифрой, то добавляем цифру в стек
+                    {
+                        reversePolishNotation.Dequeue();
+                        operands.Push(operand);
                     }
                 }
             }
